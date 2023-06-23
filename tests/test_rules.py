@@ -58,8 +58,10 @@ def _gen_all_test_cases(rules: LintRuleCollectionT) -> List[GenTestCaseType]:
             continue
         for test_type in {"VALID", "INVALID"}:
             if cases := getattr(rule, test_type, None):
-                for index, test_case in enumerate(cases):
-                    all_cases.append((rule, test_case, f"{test_type}_{index}"))
+                all_cases.extend(
+                    (rule, test_case, f"{test_type}_{index}")
+                    for index, test_case in enumerate(cases)
+                )
     return all_cases
 
 

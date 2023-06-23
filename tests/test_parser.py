@@ -20,8 +20,7 @@ PR = {"user": {"login": user}, "labels": [], "html_url": "", "url": ""}
 
 # Don't mix this up with `utils.get_file_content`
 def get_source(filename: str) -> bytes:
-    with open(DATA_DIRPATH / filename) as file:
-        file_content = file.read()
+    file_content = Path(DATA_DIRPATH / filename).read_text()
     return file_content.encode("utf-8")
 
 

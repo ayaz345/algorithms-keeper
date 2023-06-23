@@ -57,10 +57,7 @@ async def get_pr_for_commit(
         f"/search/issues?q=type:pr+state:open+draft:false+repo:{repository}+sha:{sha}",
         oauth_token=await gh.access_token,
     )
-    if data["total_count"] > 0:
-        # There should only be one
-        return data["items"][0]
-    return None
+    return data["items"][0] if data["total_count"] > 0 else None
 
 
 async def get_check_runs_for_commit(gh: GitHubAPI, *, sha: str, repository: str) -> Any:

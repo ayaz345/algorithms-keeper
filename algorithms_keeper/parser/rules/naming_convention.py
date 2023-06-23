@@ -35,9 +35,8 @@ class NamingConvention(Enum):
             name = name.strip("_")
             if name[0].islower() or "_" in name:
                 return False
-        else:
-            if name.lower() != name and name.upper() != name:
-                return False
+        elif name.lower() != name and name.upper() != name:
+            return False
         return True
 
 

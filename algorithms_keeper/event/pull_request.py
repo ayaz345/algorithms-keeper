@@ -147,7 +147,7 @@ async def close_invalid_or_additional_pr(
             if len(user_pr_numbers) > MAX_PR_PER_USER:
                 logger.info("Multiple open PRs: %s", pull_request["html_url"])
                 # Convert list of numbers to: "#1, #2, #3"
-                pr_number = "#{}".format(", #".join(map(str, user_pr_numbers)))
+                pr_number = f'#{", #".join(map(str, user_pr_numbers))}'
                 await utils.close_pr_or_issue(
                     gh,
                     comment=MAX_PR_REACHED_COMMENT.format(

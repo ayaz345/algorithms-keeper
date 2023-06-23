@@ -18,8 +18,7 @@ async def mock_return(*args: Any, **kwargs: Any) -> Dict[str, str]:
 @pytest_asyncio.fixture
 async def github_api() -> AsyncGenerator[GitHubAPI, None]:
     async with aiohttp.ClientSession() as session:
-        gh = GitHubAPI(number, session, "algorithms-keeper")
-        yield gh
+        yield GitHubAPI(number, session, "algorithms-keeper")
     assert session.closed is True
 
 

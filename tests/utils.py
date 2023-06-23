@@ -7,10 +7,7 @@ from gidgethub.sansio import Event
 def parametrize_id(obj: object) -> str:
     """``Event.delivery_id`` is used as a short description for the respective test
     case and as a way to id the specific test case in the parametrized group."""
-    if isinstance(obj, Event):
-        return obj.delivery_id
-    else:
-        return ""
+    return obj.delivery_id if isinstance(obj, Event) else ""
 
 
 @dataclass(repr=False, eq=False, frozen=True)
